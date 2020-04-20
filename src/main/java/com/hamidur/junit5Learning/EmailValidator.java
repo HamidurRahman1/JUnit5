@@ -20,4 +20,8 @@ public class EmailValidator
                 "4. Underscore(_), dash(-), and dot(.) are permitted.\n"+
                 "5. Other characters are not permitted.\n";
     }
+
+    public static void main(String[] args) {
+        System.out.println(new EmailValidator().isValid("random@email.com"));
+    }
 }

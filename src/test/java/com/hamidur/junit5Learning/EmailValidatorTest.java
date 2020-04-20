@@ -1,6 +1,7 @@
 package com.hamidur.junit5Learning;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,13 @@ public class EmailValidatorTest
     @DisplayName("email tester")
     void testEmail()
     {
-        System.out.println("running testEmail()");
+        EmailValidator emailValidator = new EmailValidator();
+
+        String emailToTest = "random@email.com";
+
+        boolean actual = emailValidator.isValid(emailToTest);
+
+        Assertions.assertTrue(actual,"Email should have been validated to pass the test.");
     }
 
     @AfterAll
