@@ -2,7 +2,7 @@ package com.hamidur.junit5Learning;
 
 public class EmailValidator
 {
-    private static final String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]";
+    private static final String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
     public EmailValidator() {}
 
