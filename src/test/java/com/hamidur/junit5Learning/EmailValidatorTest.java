@@ -12,7 +12,6 @@ import org.junit.jupiter.api.TestInstance;
 public class EmailValidatorTest
 {
     @BeforeAll
-    @DisplayName("initializer")
     static void init()
     {
         System.out.println("initializing some resources before running anything from this class.");
@@ -31,8 +30,17 @@ public class EmailValidatorTest
         Assertions.assertTrue(actual,"Email should have been validated to pass the test.");
     }
 
+    @Test
+    void testEmail2()
+    {
+        EmailValidator emailValidator = new EmailValidator();
+
+        String emailToTest = "+InvalidName@~invalidDomain.com";
+
+        Assertions.assertFalse(emailValidator.isValid(emailToTest),"Email should have been validated to pass the test.");
+    }
+
     @AfterAll
-    @DisplayName("destroyer")
     static void destroy()
     {
         System.out.println("cleaning up some intensive resources after running all tests.");
