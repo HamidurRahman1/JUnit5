@@ -1,6 +1,7 @@
 package com.hamidur.junit5Learning;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,6 +28,12 @@ public class EmailValidatorTest
     void initEach()
     {
         emailValidator = new EmailValidator();
+    }
+
+    @AfterEach
+    void destroyAfterEach()
+    {
+        emailValidator = null;
     }
 
     @Test
@@ -57,7 +64,7 @@ public class EmailValidatorTest
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "emails.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "resources/emails.csv", numLinesToSkip = 1)
     @DisplayName("Emails from CSV")
     void testingEmailFromCSV(String email)
     {
