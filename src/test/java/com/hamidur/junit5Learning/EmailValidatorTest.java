@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Testing - EmailValidator")
@@ -52,6 +52,14 @@ public class EmailValidatorTest
     @ValueSource(strings = {"username@email.com", "name@random-domain.com", "user100name@email.org"})
     @DisplayName("Hard coded email in value source")
     void testEmail(String email)
+    {
+        Assertions.assertTrue(emailValidator.isValid(email),"Email should have been validated to pass the test.");
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "emails.csv", numLinesToSkip = 1)
+    @DisplayName("Emails from CSV")
+    void testingEmailFromCSV(String email)
     {
         Assertions.assertTrue(emailValidator.isValid(email),"Email should have been validated to pass the test.");
     }
