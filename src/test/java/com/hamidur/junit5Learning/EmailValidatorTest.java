@@ -48,17 +48,12 @@ public class EmailValidatorTest
         Assertions.assertFalse(emailValidator.isValid(emailToTest),"Email should have been validated to pass the test.");
     }
 
-    @Nested
-    @DisplayName("Testing inputs from different resources")
-    class DifferentResourceTester
+    @ParameterizedTest
+    @ValueSource(strings = {"username@email.com", "name@random-domain.com", "user100name@email.org"})
+    @DisplayName("Hard coded email in value source")
+    void testEmail(String email)
     {
-        @ParameterizedTest
-        @ValueSource(strings = {"username@email.com", "name@random-domain.com", "user100name@email.org"})
-        @DisplayName("All input should pass the test")
-        void testEmail(String email)
-        {
-            Assertions.assertTrue(emailValidator.isValid(email),"Email should have been validated to pass the test.");
-        }
+        Assertions.assertTrue(emailValidator.isValid(email),"Email should have been validated to pass the test.");
     }
 
     @AfterAll
