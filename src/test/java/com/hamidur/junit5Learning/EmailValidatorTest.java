@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -16,7 +17,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class EmailValidatorTest
 {
-    EmailValidator emailValidator;
+    private EmailValidator emailValidator;
 
     @BeforeAll
     static void init()
@@ -63,6 +64,7 @@ public class EmailValidatorTest
         Assertions.assertTrue(emailValidator.isValid(email),"Email should have been validated to pass the test.");
     }
 
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = "resources/emails.csv", numLinesToSkip = 1)
     @DisplayName("Emails from CSV")
