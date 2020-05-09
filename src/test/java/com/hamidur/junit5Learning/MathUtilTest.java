@@ -12,7 +12,7 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.util.Random;
 
-@Tag("mathUtil")
+@Tag("math")
 @DisplayName("MathUtilTest")
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class MathUtilTest
@@ -46,6 +46,16 @@ public class MathUtilTest
         int expected = a*b;
 
         Assertions.assertEquals(expected, mathUtil.multiply(a, b), () -> "should multiply two numbers.");
+    }
+
+    @Test
+    @DisplayName("Exception testing with divide()")
+    void testDivide()
+    {
+        int a = 1;
+        int b = 0;
+
+        Assertions.assertThrows(ArithmeticException.class, () -> mathUtil.divide(a, b));
     }
 
     @AfterEach
