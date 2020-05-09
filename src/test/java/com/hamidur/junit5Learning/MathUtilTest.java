@@ -58,6 +58,17 @@ public class MathUtilTest
         Assertions.assertThrows(ArithmeticException.class, () -> mathUtil.divide(a, b));
     }
 
+    @Test
+    @DisplayName("Assert all with add()")
+    void testAdds()
+    {
+        Assertions.assertAll("MathUtil features test at once",
+                () -> Assertions.assertEquals(4, mathUtil.add(1, 3)),
+                () -> Assertions.assertEquals(0, mathUtil.sub(2, 2)),
+                () -> Assertions.assertEquals(6, mathUtil.multiply(2, 3)),
+                () -> Assertions.assertEquals(2, mathUtil.divide(4, 2)));
+    }
+
     @AfterEach
     void destroyEach()
     {
